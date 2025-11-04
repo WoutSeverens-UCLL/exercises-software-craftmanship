@@ -9,7 +9,12 @@ public class Main {
         appleStock.addInvestor(john);
         appleStock.addInvestor(blackRock);
 
+
+
         appleStock.setPrice(150.25);
+
+        appleStock.removeInvestor(john);
+
         appleStock.setPrice(150.50);
     }
 }
