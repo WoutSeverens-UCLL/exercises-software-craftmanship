@@ -4,24 +4,31 @@ import be.ucll.crafsmanship.command.gamecontroller.commands.*;
 
 public class Main {
     public static void main(String[] args) {
+        Receiver receiver = new Receiver();
+        Command circleCommand = new PressCircleCommand(receiver);
+        Command crossCommand = new PressCrossCommand(receiver);
+        Command squareCommand = new PressSquareCommand(receiver);
+        Command triangleCommand = new PressTriangleCommand(receiver);
         GameApp gameApp = new GameApp();
 
-        Receiver receiver = new Receiver();
-        Command jump = new PressCrossCommand(receiver);
-        gameApp.setCommand(jump);
-        gameApp.pressButton();
+        gameApp.setCircleButton(circleCommand);
+        gameApp.pressCircleButton();
 
-        Command crouch = new PressCircleCommand(receiver);
-        gameApp.setCommand(crouch);
-        gameApp.pressButton();
 
-        Command swapWeapon = new PressTriangleCommand(receiver);
-        gameApp.setCommand(swapWeapon);
-        gameApp.pressButton();
+        gameApp.setCrossButton(crossCommand);
+        gameApp.pressCrossButton();
 
-        Command useWeapon = new PressSquareCommand(receiver);
-        gameApp.setCommand(useWeapon);
-        gameApp.pressButton();
+
+        gameApp.setSquareButton(squareCommand);
+        gameApp.pressSquareButton();
+
+
+        gameApp.setTriangleButton(triangleCommand);
+        gameApp.pressTriangleButton();
+
+        //remapping cross button to square action
+        gameApp.setCrossButton(squareCommand);
+        gameApp.pressCrossButton();
 
     }
 }
